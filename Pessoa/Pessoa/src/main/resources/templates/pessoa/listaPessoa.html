@@ -17,7 +17,7 @@
 	<body>
 	<div class="container">
 	
-		<h2><a href="/cadastrar-pessoa">Cadastrar Nova Pessoa</a></h2>
+		<h2><a href="/cadastrarPessoa">Cadastrar Nova Pessoa</a></h2>
 			<h1>Lista de Pessoas</h1>
 			
 				<table class="table table-dark">
@@ -36,8 +36,8 @@
 						<td th:text="${pessoa.nome}"></td>
 						<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
 						<td th:text="${pessoa.salario}"></td>
-						<td i class="material-icons">create</i></td>
-						<td i class="material-icons">delete</i></td>			    
+						<td i class="material-icons">create</td>
+						<td i class="material-icons">delete</td>			    
 				    </tr>
 				  </tbody>
 				</table>
