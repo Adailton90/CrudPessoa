@@ -7,5 +7,5 @@ import com.Pessoa.Pessoa.Model.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
-
+	Pessoa findByCodigo(long codigo);
 }

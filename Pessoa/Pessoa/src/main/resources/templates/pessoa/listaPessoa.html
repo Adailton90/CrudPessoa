@@ -12,7 +12,10 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 		
-
+		<style>
+			a:link {text-decoration: none;}
+			i{color: white;}
+		</style>
 	</head>
 	<body>
 	<div class="container">
@@ -37,7 +40,9 @@
 						<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
 						<td th:text="${pessoa.salario}"></td>
 						<td i class="material-icons">create</td>
-						<td i class="material-icons">delete</td>			    
+						<td ><a
+							th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}"><i class="material-icons">delete</i></a></td>
+			    
 				    </tr>
 				  </tbody>
 				</table>

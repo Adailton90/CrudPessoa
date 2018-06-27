@@ -27,10 +27,11 @@
 		<div class="container">
 			<form action="@/listaPessoa" method="post">
 				<div id="cadastros">
-					<p>Nome: <input style="width:510px;"  type="text" value="" name="nome"/></p>
+					<p>Nome: <input style="width:510px;" type="text" value="" name="nome"/></p>
 					Data de Nascimento: <input type="date" value="" name="nascimento"/>			
 					Salário: <input type="number" name="salario" step="any" />
 					<button type="submit" class="btn btn-light">Salvar</button>
+					<input type="button" value="Voltar" class="btn btn-light" onClick="history.go(-1)"><!-- voltar para pagina anterior --> 	
 				</div>
 			</form>	
 		</div>

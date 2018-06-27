@@ -2,13 +2,16 @@ package com.Pessoa.Pessoa.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Pessoa.Pessoa.Model.Pessoa;
 import com.Pessoa.Pessoa.Repository.PessoaRepository;
+
 
 @Controller
 public class PessoaController {
@@ -21,17 +24,16 @@ public class PessoaController {
 		return "pessoa/home";
 	}
 	
-	@RequestMapping("/listaPessoa")
+	@GetMapping("/listaPessoa")
 	public ModelAndView listarPessoas() {
 		ModelAndView retorno = new ModelAndView("pessoa/listaPessoa");
-		Iterable<Pessoa> pessoa = repository.findAll();
-		retorno.addObject("listaPessoa", pessoa);
+		retorno.addObject("listaPessoa", repository.findAll());//dando nome ao objeto e metodo de trazer todos 
 		return retorno;
 	}
 	
 	@GetMapping("/cadastrarPessoa")//vai para a tela de cadastro
 	public ModelAndView cadastrarPessoa() {
-		ModelAndView retorno = new ModelAndView("pessoa/cadastrarPessoa");
+		ModelAndView retorno = new ModelAndView("pessoa/cadastrarPessoa");//diretorio da pagina que sera carregada 
 		retorno.addObject("pessoa", new Pessoa());//criando um nome para um objeto para ser instaciado no HTML
 		return retorno;
 	}
@@ -40,5 +42,12 @@ public class PessoaController {
 		repository.save(pessoa);
 		return new ModelAndView("redirect:/listaPessoa");
 	}
-	
+
+	@RequestMapping("/deletar")
+	public String deletar(long codigo) {
+		Pessoa pessoa = repository.findByCodigo(codigo);
+		repository.delete(pessoa);
+		
+		return "redirect:/listaPessoa";
+	}
 }
