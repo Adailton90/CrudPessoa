@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+		xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Editar</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      		rel="stylesheet">
+      		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+		
+		<style >
+			#cadastros {
+				background-color: black;
+				color: white;
+				padding: 10px;
+				margin:5px;
+				width: 600px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form  action="@/listaPessoa" th:object="${pessoa}" method="post">
+				<input id="codigo" type="hidden" required="required" th:field="*{codigo}">
+				<div id="cadastros">
+					<input name="_method" value="put" type="hidden"> <!-- chamado o mapeamento de put -->
+					<p>Nome: <input style="width:510px;" id="nome" type="text" required="required" th:field="*{nome}"/></p>
+					Daa de Nascimento: <input  id="nascimento" type="date" required="required" th:field="*{nascimento}" />			
+					Salário: <input id="salario" type="number" step="any" required="required" th:field="*{salario}" />
+					<button type="submit" class="btn btn-light">Salvar</button>
+					<input type="button" value="Voltar" class="btn btn-light" onClick="history.go(-1)"><!-- voltar para pagina anterior --> 	
+				</div>
+			</form>	
+		</div>
+	</body>
+	
+</html>

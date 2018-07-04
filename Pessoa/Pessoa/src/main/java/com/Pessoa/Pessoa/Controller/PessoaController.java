@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,5 +50,18 @@ public class PessoaController {
 		repository.delete(pessoa);
 		
 		return "redirect:/listaPessoa";
+	}
+	
+	@GetMapping("/editarPessoa/{codigo}")
+	public ModelAndView editarPessoa(@PathVariable long codigo) {
+		ModelAndView retorno = new ModelAndView("pessoa/editarPessoa"); 
+		retorno.addObject("pessoa",repository.findByCodigo(codigo));
+		return retorno;
+	}
+	
+	@PutMapping
+	public ModelAndView editarPessoa(Pessoa pessoa) {
+		repository.save(pessoa);
+		return listarPessoas();
 	}
 }

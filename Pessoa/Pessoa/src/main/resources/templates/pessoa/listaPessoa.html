@@ -13,7 +13,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 		
 		<style>
-			a:link {text-decoration: none;}
+			a:link {text-decoration: none; color:white;}
 			i{color: white;}
 		</style>
 	</head>
@@ -39,8 +39,8 @@
 						<td th:text="${pessoa.nome}"></td>
 						<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
 						<td th:text="${pessoa.salario}"></td>
-						<td i class="material-icons">create</td>
-						<td ><a
+						<td><a th:href="@{/editarPessoa/{codigo}(codigo=${pessoa.codigo})}"> <i class="material-icons">create</i></a></td>
+						<td><a
 							th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}"><i class="material-icons">delete</i></a></td>
 			    
 				    </tr>
