@@ -13,41 +13,47 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 		
 		<style>
+			span{color: white;}
 			a:link {text-decoration: none; color:white;}
 			i{color: white;}
+			
+			table {background-color: #2F4F4F;
+				box-shadow:5px 5px 0 #D3D3D3 ;}
 		</style>
 	</head>
 	<body>
-	<div class="container">
+		<div class="container">
+		
+			<h2><a href="/cadastrarPessoa">Cadastrar Nova Pessoa</a></h2>
+				<h1>Lista de Pessoas</h1>
+				
+					<table class="table table-dark">
+					  <thead>
+					    <tr>
+					      <th scope="col">Codigo</th>
+					      <th scope="col">Nome</th>
+					      <th scope="col">Nascimento</th>
+					      <th scope="col">Salario</th>
+					    </tr>
+					  </thead>
+					  
+					  <tbody>
+					    <tr th:each="pessoa : ${listaPessoa}">
+							<td th:text="${pessoa.codigo}"></td>
+							<td><a th:href="@{/{codigo}(codigo=${pessoa.codigo})}"><span th:text="${pessoa.nome}"></span></a></td>
+								
+							<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
+							<td th:text="${pessoa.salario}"></td>
+							<td><a th:href="@{/editarPessoa/{codigo}(codigo=${pessoa.codigo})}"> <i class="material-icons">create</i></a></td>
+							<td><a
+								th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}"><i class="material-icons">delete</i>
+								</a></td>
+				    
+					    </tr>
+					  </tbody>
+					</table>
 	
-		<h2><a href="/cadastrarPessoa">Cadastrar Nova Pessoa</a></h2>
-			<h1>Lista de Pessoas</h1>
-			
-				<table class="table table-dark">
-				  <thead>
-				    <tr>
-				      <th scope="col">Codigo</th>
-				      <th scope="col">Nome</th>
-				      <th scope="col">Nascimento</th>
-				      <th scope="col">Salario</th>
-				    </tr>
-				  </thead>
-				  
-				  <tbody>
-				    <tr th:each="pessoa : ${listaPessoa}">
-						<td th:text="${pessoa.codigo}"></td>
-						<td th:text="${pessoa.nome}"></td>
-						<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
-						<td th:text="${pessoa.salario}"></td>
-						<td><a th:href="@{/editarPessoa/{codigo}(codigo=${pessoa.codigo})}"> <i class="material-icons">create</i></a></td>
-						<td><a
-							th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}"><i class="material-icons">delete</i></a></td>
-			    
-				    </tr>
-				  </tbody>
-				</table>
-
-	</div>	
+		</div>	
 	</body>
 	
 </html>

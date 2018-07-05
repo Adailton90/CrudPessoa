@@ -14,6 +14,7 @@ import com.Pessoa.Pessoa.Model.Pessoa;
 import com.Pessoa.Pessoa.Repository.PessoaRepository;
 
 
+
 @Controller
 public class PessoaController {
 	
@@ -63,5 +64,14 @@ public class PessoaController {
 	public ModelAndView editarPessoa(Pessoa pessoa) {
 		repository.save(pessoa);
 		return listarPessoas();
+	}
+	
+	@RequestMapping("/{codigo}")
+	public ModelAndView detalhePessoa(@PathVariable long codigo) {
+		Pessoa pessoa = repository.findByCodigo(codigo); // atribuindo o codigo(id) ao objeto
+		ModelAndView retorno = new ModelAndView("pessoa/detalharPessoa");
+		retorno.addObject("pessoa", pessoa);
+		return retorno;
+		
 	}
 }
