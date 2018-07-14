@@ -44,9 +44,9 @@
 								
 							<td th:text="${#dates.format(pessoa.nascimento, 'dd-MM-yyyy')}"></td>
 							<td th:text="${pessoa.salario}"></td>
-							<td><a th:href="@{/editarPessoa/{codigo}(codigo=${pessoa.codigo})}"> <i class="material-icons">create</i></a></td>
+							<td><a th:href="@{/editarPessoa/{codigo}(codigo=${pessoa.codigo})}" title="Editar"> <i class="material-icons">create</i></a></td>
 							<td><a
-								th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}"><i class="material-icons">delete</i>
+								th:href="${(#mvc.url('PC#deletar').arg(0,pessoa.codigo).build())}" title="Deletar"><i class="material-icons">delete</i>
 								</a></td>
 				    
 					    </tr>
