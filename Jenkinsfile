@@ -1,8 +1,9 @@
 node {
-    stage('SCM Checkout') {
+    stage('SCM Checkout'){
             git 'https://github.com/Adailton90/CrudPessoa'
-        }
-    stage('build'){
-            sh 'mvn pacage'   
-        }
     }
+    stage('build'){
+            sh 'mvn pacage'  
+        }
+    
+}
