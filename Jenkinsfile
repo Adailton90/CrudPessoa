@@ -10,7 +10,7 @@ pipeline {
             steps{
                git 'https://github.com/Adailton90/CrudPessoa.git'
             }
-	    }
+	}
         stage('Build') {
             steps{
                 sh 'mvn package'
