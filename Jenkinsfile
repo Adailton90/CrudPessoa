@@ -1,11 +1,20 @@
-node {
-    stage('SCM Checkout'){        
-        git 'https://github.com/Adailton90/CrudPessoa'
+pipeline {
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
     }
-    stage('build'){
-        //Get maven home path
-        def mvnHome = tool name: 'maven', type: 'maven'
-        sh "${mvnHome}/bin/mvn package"  
+    stages {
+        stage('SCM Checkout'){
+            steps{
+               git 'https://github.com/Adailton90/CrudPessoa.git'
+            }
+	    }
+        stage('Build') {
+            steps{
+                sh 'mvn package'
+            }
+        }
     }
-    
 }
