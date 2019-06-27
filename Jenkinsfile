@@ -6,14 +6,15 @@ pipeline {
         }
     }
     stages {
-        stage('SCM Checkout'){
+	 //fazendo checout no repositorio onde quer fazer o build
+        /*stage('SCM Checkout'){
             steps{
                git 'https://github.com/Adailton90/CrudPessoa.git'
             }
-	}
+	}*/
         stage('Build') {
+	//build maven
             steps{
-		//build maven
                 sh 'mvn package'
             }
         }
