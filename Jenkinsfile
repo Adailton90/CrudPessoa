@@ -13,7 +13,7 @@ pipeline {
             }
 	}*/
         stage('Build') {
-	//build maven
+	//build maven docker
             steps{
                 sh 'mvn package'
             }
