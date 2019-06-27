@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
 	//build maven
             steps{
-                sh 'mvnw clean package'
+                sh './Pessoa/Pessoa/mvnw clean package'
             }
         }
     }
