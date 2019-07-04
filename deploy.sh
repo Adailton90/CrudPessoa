@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build --name aplicacao .
+/usr/bin/docker build --name aplicacao .
